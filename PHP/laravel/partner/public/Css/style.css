@@ -1,0 +1,59 @@
+    
+    /* Login & Register Style */
+    #alert-danger{
+        
+    }
+    
+    #row1
+    {
+        margin-top: 50px;
+        border: 0px solid #0000ff;
+        margin-bottom: 10px;
+    }
+    
+    #row2
+    {
+        border: 0px solid #0000ff;
+        margin-bottom: 20px;
+    }
+    
+    #row3
+    {
+        border: 0px solid #0000ff;
+        margin-bottom: 10px;
+    }
+    
+    #row4
+    {
+        border: 0px solid #0000ff;
+        margin-bottom: 10px;
+    }
+    
+    #row5
+    {
+        border: 0px solid #0000ff;
+        margin-bottom: 10px;
+    }
+    
+    #row6
+    {
+        border: 0px solid #0000ff;
+        margin-bottom: 10px;
+    }    
+    
+    #login{
+      width:400px;
+      text-align:left;
+      
+    }
+    
+    #register{
+      width:400px;
+      text-align:left;
+    }
+    
+    
+    
+    /* End login & register style */
+    
+    

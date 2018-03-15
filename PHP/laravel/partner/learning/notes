@@ -1,0 +1,18 @@
+
+$$$$ What did I face of questions $$$$
+
+How can I use hash ?
+
+First include the Facade in your file
+use Illuminate\Support\Facades\Hash;
+use Hash;
+
+and use Make Method to generate password.
+$hashedPassword = Hash::make($request->newPassword);
+
+and when you want to match the Hashed string you can use the below code:
+Hash::check($request->newPasswordAtLogin, $hashedPassword)
+
+==================================================================================
+
+
