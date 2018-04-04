@@ -1,0 +1,25 @@
+Movie Database Summary
+-----
+Number of movies: 29947
+Number of actors: 274631
+-----
+Most rated films:
+Reckless (10.0)
+Girl in the Cadillac (10.0)
+The Haunted World of Edward D. Wood, Jr. (10.0)
+Carmen Miranda: Bananas Is My Business (10.0)
+Other Voices Other Rooms (10.0)
+-----
+Most hired actors:
+Bess Flowers (82)
+Christopher Lee (69)
+Grey Griffin (59)
+Danny Trejo (54)
+Eric Roberts (52)
+-----
+Most appearing movie genres:
+Drama (14495)
+Comedy (8955)
+-----
+Actors male-female ratio:
+FEMALE (64.06596302986145%) MALE (35.93403398990631%)

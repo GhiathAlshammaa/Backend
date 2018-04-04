@@ -1,0 +1,25 @@
+dish;type;price
+tomato soup;soup;2.9
+champignon soup;soup;2.9
+onion soup;soup;2.9
+vegetable soup;soup;2.9
+garlic soup;soup;2.9
+potato salad;salad;3
+shrimp salad;salad;6.9
+rucola salad;salad;6.9
+mixed salad;salad;3.7
+classic burger;burger;8
+route 66 burger;burger;9.7
+italian burger;burger;8.7
+cheeseburger;burger;8.5
+pizza marinara;pizza;4.5
+pizza margherita;pizza;6
+pizza cardinale;pizza;6.5
+pizza calzone;pizza;7.5
+schnitzel;meat;7
+cordon bleu;meat;8
+cevapcici;meat;8.9
+apple cake;dessert;3.5
+palatschinken;dessert;3.5
+profiteroles;dessert;3.9
+tiramisu;dessert;3.9

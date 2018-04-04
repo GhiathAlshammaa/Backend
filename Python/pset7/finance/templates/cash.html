@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+{% block main %}
+        <form action="/cash" method="post">
+            <fieldset>
+            <div class="form-group">
+                How much do you want to add to your current cash : <br><br>
+                    <input class="form-control" name="cash" placeholder="Cash" type="number"/>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Add</button>
+            </div>
+            </fieldset>
+        </form>
+{% endblock %}

@@ -1,0 +1,4 @@
+The 5 most rated films (top to bottom)
+The 5 most hired actors (top to bottom)
+The 2 most appearing movie genres (top to bottom)
+The % of male-female ratio (biggest % smallest)

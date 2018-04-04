@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped" style="width:100%">
+      <tr>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Shares</th>
+        <th>Price</th>
+        <th>TOTAL</th>
+      </tr>
+    {% for r in records %}
+      <tr>
+        <td>{{ r.symbol }}</td>
+        <td>{{ r.name }}</td>
+        <td>{{ r.shares }}</td>
+        <td>{{ r.price }}</td>
+        <td>{{ r.total }}</td>
+      </tr>
+    {% endfor %}
+      <tr>
+        <td><b>CASH</b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{CashCurrent}}</td>
+      </tr>
+      <tr>
+        <td><b>TOTAL</b></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><b>{{total}}</b></td>
+      </tr>
+    </table>
+
+{% endblock %}
