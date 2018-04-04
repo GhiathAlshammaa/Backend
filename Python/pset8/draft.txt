@@ -1,0 +1,136 @@
+
+function addMarker(place)
+{
+    // TODO
+    // get the latitude and longitude of the place
+    var LatLng = new google.maps.LatLng(place["latitude"], place["longitude"]);
+
+    // icon image of the marker
+    //var icon = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
+
+    // instantiate marker
+    var marker = new google.maps.Marker({
+        position: LatLng,
+        map: map,
+        title: place["place_name"] + ", " + place["admin_name1"],
+        label: place["place_name"] + ", " + place["admin_name1"],
+        //icon: icon
+    });
+
+    // get the relevant articles
+    $.getJSON(Flask.url_for("articles"), {geo: place.postal_code}, function(articles) {
+
+        // display infowindow if articles exist
+        if (!$.isEmptyObject(articles)) {
+            // start unordered list
+            var articlesContent = "<ul>";
+            for (var i = 0; i < articles.length; i++) {
+                //each list item is stored into articlesString
+                articlesContent += "<li><a target='_NEW' href='" + articles[i].link
+                + "'>" + articles[i].title + "</a></li>";
+            }
+        }
+
+        //close unordered list
+        articlesContent += "</ul>";
+
+        // clicks event on marker
+        google.maps.event.addListener(marker, 'click', function () {
+            showInfo(marker, articlesContent);
+        });
+    });
+
+    // add marker to map markers
+    //marker.setMap(map);
+    markers.push(marker);
+}
+
+
+
+   """Look up articles for geo."""
+
+    # retrieve geo argument from HTML form
+    geo = request.args.get("geo")
+
+    # if argument is missing, raise RuntimeError
+    if not geo:
+        raise RuntimeError("Geo not set")
+
+    # search for articles in that geo
+    articles = lookup(geo)
+
+    # return up to 5 articles as a JSON object
+    if len(articles) > 5:
+        return jsonify([articles[0], articles[1], articles[2], articles[4], articles[5]])
+    else:
+        return jsonify(articles)
+
+
+## search
+
+
+    # retrieve q from HTML form
+    q = request.args.get("q") + "%"
+
+    # Finds any postal code, city and state that start with q
+    place = db.execute("SELECT * FROM places WHERE postal_code \
+                                LIKE :q OR place_name LIKE :q OR admin_name1 LIKE :q", q=q)
+
+    # Return up to 10 places found as JSON object
+    if len(place) > 10:
+        return jsonify([place[0], place[1], place[2],  place[3],  place[4],
+                        place[5], place[6],  place[7],  place[8],  place[9]])
+    else:
+        return jsonify(place)
+
+
+
+## Add Marker
+
+// extract the place latitude and longitude
+    var myLatLng = new google.maps.LatLng(place["latitude"], place["longitude"]);
+
+    // icon for the marker
+    var image = "http://maps.google.com/mapfiles/kml/pal2/icon31.png";
+
+    // instantiate marker
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: place["place_name"] +", "+ place["admin_name1"],
+        label: place["place_name"] +", "+ place["admin_name1"],
+        icon : image
+    });
+
+    // get articles for place
+    $.getJSON(Flask.url_for("articles"), {geo: place.postal_code}, function(articles) {
+
+        // Only display infowindow if articles exist
+        if (!$.isEmptyObject(articles))
+        {
+			// start Unordered List
+            var articlesContent = "<ul>";
+            for (var i = 0; i < articles.length; i++)
+            {
+				//Each list item is stored into articlesString
+            	articlesContent += "<li><a target='_NEW' href='" + articles[i].link
+            	+ "'>" + articles[i].title + "</a></li>";
+            }
+        }
+
+        // close the unordered list of articles
+		articlesContent += "</ul>";
+
+		// listen for clicks on marker
+        google.maps.event.addListener(marker, 'click', function() {
+            showInfo(marker, articlesContent);
+		});
+    });
+
+    // add marker to the map markers
+    markers.push(marker);
+
+
+
+    ## Remove Markers
+
