@@ -11,6 +11,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.lang.Exception;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -62,7 +63,8 @@ public class Searcher
     public void Stufe2()
     {
         System.out.print("(");
-        this.getUmlaut_words().forEach(result -> System.out.print(result + ","));
+        this.umlaut_words = umlaut_words.stream().distinct().collect(Collectors.toList());
+        this.umlaut_words.forEach(result -> System.out.print(result + ","));
         System.out.print(")");
         System.out.println();
     }

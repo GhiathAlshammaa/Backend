@@ -22,15 +22,15 @@ public class Techsoft {
         Searcher searcher = new Searcher();
               
         /* The solutions of the stages */
-        System.out.println("######### First Stufe #########");
+        System.out.println("######### Stufe 1 #########");
         //Exactly like the demand : 
         searcher.Stufe1();
         
-        System.out.println("######### Second Stufe #########");
+        System.out.println("######### Stufe 2 #########");
         //Exactly like the demand : 
         searcher.Stufe2();
         
-        System.out.println("######### Third Stufe ######### ");
+        System.out.println("######### Stufe 3 ######### ");
         // I was wanting to use the Sql statment in this way : 
         // " select *  from tbl_phonebook where soundex("last_name") = soundex('RUESSWURM');"
         // but unfortunatly the soundex function is not available with Derby Database ,  
