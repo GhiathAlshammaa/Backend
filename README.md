@@ -7,6 +7,6 @@ My training projects & Two test one in java and another in C# for Techsoft and k
 
 https://mashup.cs50.net/
 
-http://finance.cs50.net/
+http://similarities.cs50.net/less
 
-https://mashup.cs50.net/
+http://finance.cs50.net/
