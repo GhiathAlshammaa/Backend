@@ -1,31 +1,57 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var app = express();
+var app = express('mongoose');
 
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var mongoose = require('mongoose');
 
 app.use(express.static(__dirname));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-var messages = [
-    { name: 'Tim', message: 'Hi' },
-    { name: 'Jane', message: 'Hello' }
-]
+var dbUrl = 'mongodb://admin:a113355@ds133981.mlab.com:33981/chatbot';
+// To prevent Depreciation warnings (From Database)
+var avoidDeprecation = { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
+
+// Message Model
+var Message = mongoose.model('Message', {
+    name: String,
+    message: String
+})
+
+// var messages = [
+//     { name: 'Tim', message: 'Hi' },
+//     { name: 'Jane', message: 'Hello' }
+// ]
 
 app.get('/messages', (req, res) => {
-    res.send(messages);
+    Message.find({}, (err, messages) => {
+        res.send(messages);
+    })
 })
 
 app.post('/messages', (req, res) => {
-    messages.push(req.body);
-    io.emit('message', req.body)
-    res.sendStatus(200);
+    var message = new Message(req.body)
+    message.save((err) => {
+        if (err)
+            sendStatus(500)
+
+        // messages.push(req.body);
+        io.emit('message', req.body)
+        res.sendStatus(200)
+    })
 })
 
 io.on('connection', (socket) => {
     console.log('A user connected')
+})
+
+
+mongoose.connect(dbUrl, avoidDeprecation).then((err) => {
+    console.log('Connection to database sucessfully');
+}).catch((error) => {
+    console.log("Error while attempting to conect to Database" + error);
 })
 
 var server = http.listen(3000, () => {
