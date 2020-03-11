@@ -11,8 +11,7 @@
       crossorigin="anonymous"
     />
     <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
       crossorigin="anonymous"
     ></script>
     <script
@@ -33,7 +32,14 @@
       <div class="jumbotron">
         <h1 class="display-4">Send Message</h1>
         <br />
-        <input type="text" class="form-control" placeholder="Name" />
+        <input id="name" type="text" class="form-control" placeholder="Name" />
+        <br />
+        <textarea
+          id="message"
+          type="text"
+          class="form-control"
+          placeholder="Message"
+        ></textarea>
         <br />
         <button class="btn btn-success" id="send">Send</button>
       </div>
@@ -42,14 +48,29 @@
     <script>
       $(() => {
         $('#send').click(() => {
-          addMessages({ name: 'Tim', message: 'hello' });
+          var message = {
+            name: $('#name').val(),
+            message: $('#message').val()
+          };
+          postMessage(message);
         });
+        getMessages();
       });
 
       function addMessages(message) {
         $('#messages').append(
           `<h4> ${message.name} </h4> <p> ${message.message} </p>`
         );
+      }
+
+      function getMessages() {
+        $.get('http://localhost:3000/messages', data => {
+          data.forEach(addMessages);
+        });
+      }
+
+      function postMessage(message) {
+        $.post('http://localhost:3000/messages', message);
       }
     </script>
   </body>
