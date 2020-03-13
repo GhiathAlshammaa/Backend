@@ -10,6 +10,10 @@ app.use(express.static(__dirname));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
+
+// to avoid deprecation 
+mongoose.Promise = Promise;
+
 var dbUrl = 'mongodb://admin:a113355@ds133981.mlab.com:33981/chatbot';
 // To prevent Depreciation warnings (From Database)
 var avoidDeprecation = { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
@@ -33,13 +37,14 @@ app.get('/messages', (req, res) => {
 
 app.post('/messages', (req, res) => {
     var message = new Message(req.body)
-    message.save((err) => {
-        if (err)
-            sendStatus(500)
+    message.save().then(() => {
 
         // messages.push(req.body);
         io.emit('message', req.body)
         res.sendStatus(200)
+    }).catch((err) => {
+        res.sendStatus(500)
+        return console.error(err)
     })
 })
 
