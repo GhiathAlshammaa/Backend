@@ -1,9 +1,9 @@
 # Backend
 
-My training projects & Two test one in java and another in C# for Techsoft and kapsch in Backend field
+My training projects in CS50 Course & Two tests one in java and another in C#, I've done them for Techsoft comapny and kapsch TrafficCom company 
 
 
-- Training projects by Paython
+- My CS50 projects by Paython language:
 
 https://mashup.cs50.net/
 
